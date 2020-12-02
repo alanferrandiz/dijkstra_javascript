@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Dijkstra</title>
+		<script src="graph.js"></script>
+	</head>
+	<body>
+		<script>
+
+
+		function find(begin, end)
+		{
+			
+			var 	map = {1:{2:5,3:2},2:{1:5,4:2},3:{1:2,4:7},4:{2:2,3:7,5:6,6:2},5:{2:6,4:6,6:1,7:2},6:{3:9,4:2,5:1,7:2},7:{5:2,6:2}},
+			 	graph = new Graph(map);
+			document.getElementById('route').innerHTML = document.getElementById('route').innerHTML + "</br>" + "Begin: <b>" + document.getElementById('begin').value + "</b>&nbsp;&nbsp;&nbsp;>>>&nbsp;&nbsp;&nbsp;" + "End: <b>" + document.getElementById('end').value + "</b>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "Route: <b>" + graph.findShortestPath(begin,end) + "</b></br>"
+			document.getElementById('begin').focus();
+		}
+
+		</script>
+
+		<img src="usf_logo.jpg" style="width:250px;">
+		</br>	
+		<div style="text-align:center;">
+		<img src="diagram.jpg" style="width:700px;">
+		</br>	
+		<input type="text" id="begin"/>
+		<input type="text" id="end"/>
+		<button type="button" onclick="find(document.getElementById('begin').value,document.getElementById('end').value)">Find shortest path</button>
+		<button type="button" onclick="document.getElementById('begin').value='';document.getElementById('end').value='';document.getElementById('route').innerHTML='';document.getElementById('begin').focus();">Clear</button>
+		</br>	
+			<label id="route"></label>
+		</div>
+
+		<script>
+		document.getElementById('begin').focus();
+		</script>
+	</body>
+</html>
